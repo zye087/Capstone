@@ -5,6 +5,7 @@ import Login from './components/Login/Login'
 
 import Requests from './components/Main/Requests' 
 import Students from './components/Main/Students'
+import Dashboard from './components/Main/Students'
 
 function App() {
     return (
@@ -15,13 +16,13 @@ function App() {
                     <Route path='/' element={<Login />} />
 
                     {/* Dashboard */}
-                    <Route path='/dashboard' element={<Layout />} />
-
-                    <Route path='/students' element={<Students />} />
-
+                    <Route element={<Layout />} >
+                        <Route index element={<Dashboard />} />
+                        <Route path='/students' element={<Students />} />
+                    </Route>
 
                     {/* Redirect invalid URL's */}
-                    <Route path="*" element={<Navigate to="/dashboard" />} />
+                    <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </BrowserRouter>
         </>
