@@ -1,32 +1,38 @@
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router'
 
-import Layout from './components/Main/Layout'
-import Login from './components/Login/Login'
+import Layout from './components/Layout'
+import Login from './pages/Login'
 
-import Requests from './components/Main/Requests' 
-import Students from './components/Main/Students'
-import Dashboard from './components/Main/Students'
+import Requests from './pages/Requests' 
+import Students from './pages/Students'
+import Dashboard from './pages/Dashboard'
+import Reports from './pages/Reports'
+import QRCodes from './pages/QRCodes'
+import ParentsGuardians from './pages/ParentsGuardians'
+import Notifications from './pages/Notifications'
 
-function App() {
+
+export const App = () => {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    {/* Login */}
-                    <Route path='/' element={<Login />} />
 
-                    {/* Dashboard */}
-                    <Route element={<Layout />} >
-                        <Route index element={<Dashboard />} />
-                        <Route path='/students' element={<Students />} />
-                    </Route>
+                    {/* Login */}
+                    <Route index element={<Login />} />
+
+                        {/* Dashboard */}
+                        <Route element={<Layout />} >
+                            <Route path='/dashboard' element={<Layout />} />
+                            {/* <Route path='/students' element={<Students />} /> */}
+                        </Route>
+
+                    {/* </Route> */}
 
                     {/* Redirect invalid URL's */}
-                    <Route path="*" element={<Navigate to="/" />} />
+                    <Route path="*" element={<Navigate to="/dashboard" />} />
                 </Routes>
             </BrowserRouter>
         </>
     )
 }
-
-export default App

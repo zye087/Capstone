@@ -27,13 +27,13 @@ import AppRegistrationTwoToneIcon from '@mui/icons-material/AppRegistrationTwoTo
 import NotificationsTwoToneIcon from '@mui/icons-material/NotificationsTwoTone';
 import ReportIcon from '@mui/icons-material/Report';
 // Components
-import Dashboard from './Dashboard';
-import Students from './Students';
-import ParentsGuardians from './ParentsGuardians';
-import QRCodes from './QRCodes';
-import Requests from './Requests';
-import Notifications from './Notifications';
-import Reports from './Reports';
+import Dashboard from '../pages/Dashboard';
+import Students from '../pages/Students';
+import ParentsGuardians from '../pages/ParentsGuardians';
+import QRCodes from '../pages/QRCodes';
+import Requests from '../pages/Requests';
+import Notifications from '../pages/Notifications';
+import Reports from '../pages/Reports';
 
 const drawerWidth = 250;
 
@@ -104,7 +104,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
-    const [selectedItem, setSelectedItem] = React.useState('Dashboard'); // State for selected item
+    const [selectedItem, setSelectedItem] = React.useState('Dashboard');
 
     const handleDrawerOpen = () => {
         setOpen(true);
