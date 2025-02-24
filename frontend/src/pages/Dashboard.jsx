@@ -9,8 +9,7 @@ const Dashboard = () => {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Typography sx={{ marginBottom: 2 }}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, itaque quaerat quas voluptatibus aspernatur velit beatae cumque sapiente mollitia reiciendis quidem nihil corporis impedit dolores molestiae accusantium praesentium consequuntur cum!
-          Dashboard ni siya
+          Dashboard
         </Typography>
       </Box>
     </>

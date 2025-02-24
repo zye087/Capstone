@@ -34,7 +34,11 @@ const App = () => {
         {
           path: '/students',
           element: <Students />
-        }
+        },
+        {
+          path: '/parents-guardians',
+          element: <ParentsGuardians />
+        },
       ]
     },
     {

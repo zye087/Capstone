@@ -28,9 +28,10 @@ import QrCode2TwoToneIcon from '@mui/icons-material/QrCode2TwoTone';
 import AppRegistrationTwoToneIcon from '@mui/icons-material/AppRegistrationTwoTone';
 import NotificationsTwoToneIcon from '@mui/icons-material/NotificationsTwoTone';
 import ReportIcon from '@mui/icons-material/Report';
-import { Link } from 'react-router'
 
-const drawerWidth = 200
+import { NavLink, useLocation } from 'react-router-dom'
+
+const drawerWidth = 240
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -120,14 +121,38 @@ const drawerList = [
     text: 'Students',
     icon: <PersonOutlineTwoToneIcon />,
     path: '/students'
-  }
+  },
+  {
+    text: 'Parents & Guardians',
+    icon: <FamilyRestroomTwoToneIcon />,
+    path: '/parents-guardians'
+  },
 ]
 
 // Main Component
 const SideBar = () => {
   const theme = useTheme()
-  const [open, setOpen] = React.useState(false)
-  const [isActive, setIsActive] = React.useState('Dashboard')
+  const location = useLocation()
+
+  const [open, setOpen] = React.useState(() => {
+    const storedState = localStorage.getItem('drawerOpen');
+    return storedState === 'true' ? true : false;
+  });
+
+  const initialPath = window.location.pathname;
+
+  const initialActive = drawerList.find(list => list.path === initialPath)?.text || 'Dashboard';
+  const [isActive, setIsActive] = React.useState(initialActive);
+
+  React.useEffect(() => {
+    localStorage.setItem('drawerOpen', open);
+  }, [open]);
+
+  React.useEffect(() => {
+    const currentPath = location.pathname;
+    const activeItem = drawerList.find(list => list.path === currentPath)?.text || 'Dashboard';
+    setIsActive(activeItem);
+  }, [location.pathname]);
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -173,80 +198,78 @@ const SideBar = () => {
         }}
         >
           {drawerList.map((list) => (
-            <ListItem key={list.text} c disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                selected={isActive === list.text}
-                onClick={() => setIsActive(list.text)}
-                sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5,
-                  },
-                  open
-                    ? {
-                        justifyContent: 'initial',
-                      }
-                    : {
-                        justifyContent: 'center',
-                      },
-                  {
-                    '&.Mui-selected': {
-                      backgroundColor: 'primary.main',
-                      color: 'white',
-                      '& .MuiListItemIcon-root': {
-                        color: 'white',
-                      }
-                    },
-                    '&.Mui-selected:hover': {
-                      backgroundColor: 'primary.main',
-                      '& .MuiListItemIcon-root': {
-                        color: 'white',
-                      }
-                    },
-                    '&:hover': {
-                      backgroundColor: 'primary.main',
-                      color: 'white',
-                      '& .MuiListItemIcon-root': {
-                        color: 'white',
-                      }
-                    }
-                  }
-                ]}
-              >
-                <ListItemIcon
+            <ListItem key={list.text} disablePadding sx={{ display: 'block' }}>
+              <NavLink to={list.path} style={{ textDecoration: 'none', color: 'inherit'}}>
+                <ListItemButton
+                  selected={location.pathname === list.path}
                   sx={[
                     {
-                      minWidth: 0,
-                      justifyContent: 'center',
+                      minHeight: 48,
+                      px: 2.5,
                     },
                     open
                       ? {
-                          mr: 3,
+                          justifyContent: 'initial',
                         }
                       : {
-                          mr: 'auto',
+                          justifyContent: 'center',
                         },
+                    {
+                      '&.Mui-selected': {
+                        backgroundColor: 'primary.main',
+                        color: 'white',
+                        '& .MuiListItemIcon-root': {
+                          color: 'white',
+                        }
+                      },
+                      '&.Mui-selected:hover': {
+                        backgroundColor: 'primary.light',
+                        '& .MuiListItemIcon-root': {
+                          color: 'white',
+                        }
+                      },
+                      '&:hover': {
+                        backgroundColor: 'primary.light',
+                        color: 'white',
+                        '& .MuiListItemIcon-root': {
+                          color: 'white',
+                        }
+                      }
+                    }
                   ]}
                 >
-                  {list.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={
-                    <Link to={list.path}>
-                      {list.text}
-                    </Link>
-                  }
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1,
-                        }
-                      : {
-                          opacity: 0,
-                        },
-                  ]}
-                />
-              </ListItemButton>
+                  <ListItemIcon
+                    sx={[
+                      {
+                        minWidth: 0,
+                        justifyContent: 'center',
+                      },
+                      open
+                        ? {
+                            mr: 3,
+                          }
+                        : {
+                            mr: 'auto',
+                          },
+                    ]}
+                  >
+                    {list.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={list.text}
+                    sx={[
+                      open
+                        ? {
+                            opacity: 1,
+                            color: 'inherit'
+                          }
+                        : {
+                            opacity: 0,
+                          },
+                    ]}
+                  />
+                </ListItemButton>
+              </NavLink>
             </ListItem>
           ))}
         </List>

@@ -1,15 +1,17 @@
-import {
-    Box,
-    Drawer,
-    Typography
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+
+import { DrawerHeader } from '../components/SideBar'
 
 const ParentsGuardians = () => {
-    return (
+  return (
     <>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
         <Typography sx={{ marginBottom: 2 }}>
-          This is the ParentsGuardians.
+          Parents & Guardians
         </Typography>
+      </Box>
     </>
   )
 }

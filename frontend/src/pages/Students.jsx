@@ -1,15 +1,17 @@
-import {
-  Box,
-  Drawer,
-  Typography
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+
+import { DrawerHeader } from '../components/SideBar'
 
 const Students = () => {
   return (
     <>
-      <Typography sx={{ marginBottom: 2 }}>
-        This is the students.
-      </Typography>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+        <Typography sx={{ marginBottom: 2 }}>
+          Student
+        </Typography>
+      </Box>
     </>
   )
 }
