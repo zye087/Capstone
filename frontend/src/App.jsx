@@ -1,9 +1,13 @@
 import React from 'react'
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router'
+import {
+  Navigate,
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom'
 
+// Components
 import Login from './pages/Login'
-
 import RootLayout from './layout/RootLayout'
 import Requests from './pages/Requests' 
 import Students from './pages/Students'
@@ -14,24 +18,35 @@ import ParentsGuardians from './pages/ParentsGuardians'
 import Notifications from './pages/Notifications'
 
 const App = () => {
-    return (
-        <>
-            <BrowserRouter>
-                <Routes>
-                    {/* Login */}
-                    <Route path='/' element={<Login />} />
-                        {/* Dashboard */}
-                        {/* <Route element={<RootLayout />} >
-                            <Route path='/dashboard' element={<Layout />} /> */}
-                            {/* <Route path='/students' element={<Students />} /> */}
-                        {/* </Route> */}
-                    {/* </Route> */}
-                    {/* Redirect invalid URL's */}
-                    {/* <Route path="*" element={<Navigate to="/dashboard" />} /> */}
-                </Routes>
-            </BrowserRouter>
-        </>
-    )
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <RootLayout />,
+      children: [
+        {
+          index: true,
+          element: <Navigate to='/dashboard' replace />,
+        },
+        {
+          path: '/dashboard',
+          element: <Dashboard />
+        },
+        {
+          path: '/students',
+          element: <Students />
+        }
+      ]
+    },
+    {
+      path: '/login',
+      element: <Login />
+    }
+  ])
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  )
 }
 
 export default App
