@@ -1,38 +1,53 @@
 import * as React from 'react'
 
-import { styled, useTheme } from '@mui/material/styles'
+// Customizing
+import {
+  styled,
+  useTheme
+} from '@mui/material/styles'
 
 // Materials
-import Box from '@mui/material/Box'
-import MuiDrawer from '@mui/material/Drawer'
-import MuiAppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import List from '@mui/material/List'
-import CssBaseline from '@mui/material/CssBaseline'
-import Typography from '@mui/material/Typography'
-import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
+import {
+  Drawer as MuiDrawer,
+  AppBar as MuiAppBar,
+  Toolbar,
+  List,
+  CssBaseline,
+  Typography,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Button,
+  Box
+} from '@mui/material';
 
 // Icons
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import DashboardTwoToneIcon from '@mui/icons-material/DashboardTwoTone';
-import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
-import FamilyRestroomTwoToneIcon from '@mui/icons-material/FamilyRestroomTwoTone';
-import QrCode2TwoToneIcon from '@mui/icons-material/QrCode2TwoTone';
-import AppRegistrationTwoToneIcon from '@mui/icons-material/AppRegistrationTwoTone';
-import NotificationsTwoToneIcon from '@mui/icons-material/NotificationsTwoTone';
-import ReportIcon from '@mui/icons-material/Report';
+import {
+  Menu as MenuIcon,
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+  DashboardTwoTone as DashboardTwoToneIcon,
+  PersonOutlineTwoTone as PersonOutlineTwoToneIcon,
+  FamilyRestroomTwoTone as FamilyRestroomTwoToneIcon,
+  QrCode2TwoTone as QrCode2TwoToneIcon,
+  AppRegistrationTwoTone as AppRegistrationTwoToneIcon,
+  NotificationsTwoTone as NotificationsTwoToneIcon,
+  Report as ReportIcon
+} from '@mui/icons-material';
 
-import { NavLink, useLocation } from 'react-router-dom'
+// Routing
+import {
+  NavLink,
+  useLocation
+} from 'react-router-dom'
 
+// Side Bar width
 const drawerWidth = 240
 
+// Customs
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -111,6 +126,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 )
 
+// Items in Side Bar
 const drawerList = [
   {
     text: 'Dashboard',
@@ -126,6 +142,26 @@ const drawerList = [
     text: 'Parents & Guardians',
     icon: <FamilyRestroomTwoToneIcon />,
     path: '/parents-guardians'
+  },
+  {
+    text: 'QR Codes',
+    icon: <QrCode2TwoToneIcon />,
+    path: '/qr-codes'
+  },
+  {
+    text: 'Requests',
+    icon: <AppRegistrationTwoToneIcon />,
+    path: '/requests'
+  },
+  {
+    text: 'Notifications',
+    icon: <NotificationsTwoToneIcon />,
+    path: '/notifications'
+  },
+  {
+    text: 'Reports',
+    icon: <ReportIcon />,
+    path: '/reports'
   },
 ]
 
@@ -166,7 +202,7 @@ const SideBar = () => {
     <>
       <CssBaseline />
       <AppBar position="fixed" color='success' open={open}>
-        <Toolbar>
+        <Toolbar sx={{ display: 'flex' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -184,6 +220,9 @@ const SideBar = () => {
           <Typography variant="h6" noWrap component="div">
             FORMATIVE SCHOOL
           </Typography>
+          <Box sx={{ marginLeft: 'auto'}}>
+            <Button variant='contained'>Profile</Button>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -198,7 +237,7 @@ const SideBar = () => {
         }}
         >
           {drawerList.map((list) => (
-            <ListItem key={list.text} disablePadding sx={{ display: 'block' }}>
+            <ListItem key={list.text} disablePadding sx={{ display: 'block' }} title={list.text}>
               <NavLink to={list.path} style={{ textDecoration: 'none', color: 'inherit'}}>
                 <ListItemButton
                   selected={location.pathname === list.path}

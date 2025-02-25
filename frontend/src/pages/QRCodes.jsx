@@ -1,15 +1,19 @@
-import {
-    Box,
-    Drawer,
-    Typography
-} from '@mui/material'
+import * as React from 'react'
+
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+
+import { DrawerHeader } from '../components/SideBar'
 
 const QRCodes = () => {
-    return (
+  return (
     <>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
         <Typography sx={{ marginBottom: 2 }}>
-          This is the QRCodes.
+          QRCodes
         </Typography>
+      </Box>
     </>
   )
 }

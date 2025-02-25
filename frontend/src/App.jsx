@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import {
   Navigate,
@@ -38,6 +38,22 @@ const App = () => {
         {
           path: '/parents-guardians',
           element: <ParentsGuardians />
+        },
+        {
+          path: '/requests',
+          element: <Requests />
+        },
+        {
+          path: '/reports',
+          element: <Reports />
+        },
+        {
+          path: '/qr-codes',
+          element: <QRCodes />
+        },
+        {
+          path: '/notifications',
+          element: <Notifications />
         },
       ]
     },
