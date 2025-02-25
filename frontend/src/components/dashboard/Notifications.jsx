@@ -2,22 +2,22 @@ import * as React from 'react'
 
 import {
   Box,
-	Card,
-	CardActionArea,
-	CardContent,
-	CardMedia,
-	Typography
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography
 } from '@mui/material'
 
 import {
   Link
 } from 'react-router'
 
-const TotalStudents = () => {
+const Notifications = () => {
   return (
     <>
       <Link
-        to='/students'
+        to='/notifications'
         style={{
           textDecoration: 'none',
           width: '100%'
@@ -27,8 +27,8 @@ const TotalStudents = () => {
           <CardActionArea>
             <CardMedia
               component='img'
-              alt='total students'
-              image='students.png'
+              alt='notification'
+              image='notification.png'
               height='100'
               sx={{
                 objectFit: 'contain',
@@ -36,8 +36,8 @@ const TotalStudents = () => {
               }}
             />
             <CardContent>
-              <Typography gutterBottom fontWeight='bold'>STUDENTS</Typography>
-              <Typography variant='h4' fontWeight='bold' textAlign='end'>342</Typography>
+              <Typography gutterBottom fontWeight='bold'>NOTIFICATIONS</Typography>
+              <Typography variant='h4' fontWeight='bold' textAlign='end'>132</Typography>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -46,4 +46,4 @@ const TotalStudents = () => {
   )
 }
 
-export default TotalStudents
+export default Notifications

@@ -30,13 +30,14 @@ import {
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
   DashboardTwoTone as DashboardTwoToneIcon,
-  PersonOutlineTwoTone as PersonOutlineTwoToneIcon,
+  PeopleAltTwoTone as PeopleAltTwoToneIcon,
   FamilyRestroomTwoTone as FamilyRestroomTwoToneIcon,
   QrCode2TwoTone as QrCode2TwoToneIcon,
   AppRegistrationTwoTone as AppRegistrationTwoToneIcon,
   NotificationsTwoTone as NotificationsTwoToneIcon,
   Report as ReportIcon
 } from '@mui/icons-material';
+
 
 // Routing
 import {
@@ -135,7 +136,7 @@ const drawerList = [
   },
   {
     text: 'Students',
-    icon: <PersonOutlineTwoToneIcon />,
+    icon: <PeopleAltTwoToneIcon />,
     path: '/students'
   },
   {
@@ -262,7 +263,7 @@ const SideBar = () => {
                         }
                       },
                       '&.Mui-selected:hover': {
-                        backgroundColor: 'primary.light',
+                        backgroundColor: 'primary.main',
                         '& .MuiListItemIcon-root': {
                           color: 'white',
                         }
