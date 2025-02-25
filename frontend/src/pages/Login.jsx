@@ -42,7 +42,7 @@ const Login = () => {
           gap: '15px'
         }}>
           {/* Logo */}
-          <img src="favicon.png" alt="logo" style={{
+          <img src="school-logo.png" alt="logo" style={{
             margin: '20px auto',
             width: '150px'
           }} />
