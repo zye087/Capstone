@@ -11,6 +11,7 @@ import TotalStudents from '../components/dashboard/TotalStudents'
 import TotalParentsGuardians from '../components/dashboard/TotalParentsGuardians'
 import PendingRequest from '../components/dashboard/PendingRequest'
 import Notifications from '../components/dashboard/Notifications'
+import RecentActivities from '../components/dashboard/RecentActivities'
 
 const Dashboard = () => {
   return (
@@ -23,6 +24,7 @@ const Dashboard = () => {
           <PendingRequest />
           <Notifications />
         </Box>
+        <RecentActivities />
       </Box>
     </>
   )
