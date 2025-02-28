@@ -1,5 +1,8 @@
-# from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from .views import studentViewSet
 
-# urlpatterns = [
-#     path('', ),
-# ]
+router = routers.DefaultRouter()
+router.register(r'student', studentViewSet)
+
+urlpatterns = router.urls
