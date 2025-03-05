@@ -19,14 +19,29 @@ import {
 const Navbar = () => {
   return (
     <>
-      <Box display='flex' alignItems='center' justifyContent='space-between' gap={1}>
-        <FormControl fullWidth variant="outlined" size='small'>
-          <InputLabel htmlFor="outlined-adornment-search">Search</InputLabel>
+      <Box
+        display='flex'
+        alignItems='center'
+        justifyContent='space-between'
+        gap={1}
+      >
+        <FormControl
+          fullWidth
+          variant="outlined"
+          size='small'
+        >
+          <InputLabel
+            htmlFor="outlined-adornment-search"
+          >
+            Search
+          </InputLabel>
             <OutlinedInput
               id="outlined-adornment-search"
               placeholder='Students ID# or Students Name'
               endAdornment={
-                <InputAdornment position="end">
+                <InputAdornment
+                  position="end"
+                >
                   <IconButton
                     edge="end"
                   >
@@ -37,8 +52,14 @@ const Navbar = () => {
               label="Search"
             />
         </FormControl>
-        <Tooltip title='Add New student' color='primary'>
-          <Button variant='contained' size='large'>
+        <Tooltip
+          title='Add New student'
+          color='primary'
+        >
+          <Button
+            variant='contained'
+            size='large'
+          >
             <PersonAddAltTwoTone />
           </Button>
         </Tooltip>   

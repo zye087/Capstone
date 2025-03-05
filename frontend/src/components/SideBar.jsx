@@ -202,8 +202,16 @@ const SideBar = () => {
   return (
     <>
       <CssBaseline />
-      <AppBar position="fixed" color='success' open={open}>
-        <Toolbar sx={{ display: 'flex' }}>
+      <AppBar
+        position="fixed"
+        color='success'
+        open={open}
+      >
+        <Toolbar
+          sx={{
+            display: 'flex'
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -218,28 +226,59 @@ const SideBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+          >
             FORMATIVE SCHOOL
           </Typography>
-          <Box sx={{ marginLeft: 'auto'}}>
-            <Button variant='contained'>Profile</Button>
+          <Box
+            sx={{
+              marginLeft: 'auto'
+            }}
+          >
+            <Button
+              variant='contained'
+            >
+              Profile
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+      >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton
+            onClick={handleDrawerClose}
+          >
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List sx={{
-          p: 0
-        }}
+        <List
+          sx={{
+            p: 0
+          }}
         >
           {drawerList.map((list) => (
-            <ListItem key={list.text} disablePadding sx={{ display: 'block' }} title={list.text}>
-              <NavLink to={list.path} style={{ textDecoration: 'none', color: 'inherit'}}>
+            <ListItem
+              key={list.text}
+              disablePadding
+              sx={{
+                display: 'block'
+              }}
+              title={list.text}
+            >
+              <NavLink
+                to={list.path}
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit'
+                }}
+              >
                 <ListItemButton
                   selected={location.pathname === list.path}
                   sx={[

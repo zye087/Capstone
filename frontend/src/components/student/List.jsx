@@ -1,10 +1,17 @@
 import * as React from 'react'
 
 import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
+  Link
+} from 'react-router-dom';
+
+import {
+  Paper,
+  Table,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
 } from '@mui/material'
 
 const List = () => {
@@ -18,15 +25,26 @@ const List = () => {
 
   return (
     <>
-      <Box display='flex' mt={1} gap={1}>
-        {data.map(item => (
-          <Card elevation={4} sx={{ minWidth: '200px'}}>
-            <CardContent >
-              <Typography>{item.first_name} {item.last_name}</Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
+      <TableContainer component={Paper} elevation={4} sx={{ maxHeight: '600px', mt: '10px' }}>
+        <Table stickyHeader> 
+          <TableHead>
+            <TableRow>
+              <TableCell>Student ID#</TableCell>
+              <TableCell>First Name</TableCell>
+              <TableCell>Last Name</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map(item => (
+              <TableRow key={item.id}>
+                <TableCell>{item.id}</TableCell>
+                <TableCell>{item.first_name}</TableCell>
+                <TableCell>{item.last_name}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   )
 }

@@ -12,10 +12,12 @@ import List from '../components/student/List'
 const Students = () => {
   return (
     <>
-      <Box component="main" sx={{
-        flexGrow: 1,
-        margin: '10px',
-      }}
+      <Box
+        component="main" 
+        sx={{
+          flexGrow: 1,
+          margin: '10px',
+        }}
       >
         <DrawerHeader />
         <Navbar />
