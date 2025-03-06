@@ -38,21 +38,20 @@ const List = () => {
         > 
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>Student ID#</TableCell>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>First Name</TableCell>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>Last Name</TableCell>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>Section</TableCell>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>Gender</TableCell>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>Age</TableCell>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>Address</TableCell>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white' }}>Status</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Student ID#</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>First Name</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Last Name</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Section</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Gender</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Age</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Address</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map(item => (
               <TableRow
                 key={item.id}
-                component='tr'
                 sx={{
                   ':hover': {
                     backgroundColor: '#42a5f5',
