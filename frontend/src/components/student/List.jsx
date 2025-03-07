@@ -29,23 +29,34 @@ const List = () => {
         component={Paper}
         elevation={4}
         sx={{
-          maxHeight: '600px',
+          maxHeight: '100%',
           mt: '10px'
-          }}
+        }}
       >
         <Table
           stickyHeader
+          sx={{
+            // height: '100%'
+          }}
         > 
           <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontWeight: 'bold' }}>Student ID#</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>First Name</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Last Name</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Section</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Gender</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Age</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Address</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
+            <TableRow
+              sx={{
+                '& th': {
+                  backgroundColor: '#1976d2',
+                  color: 'white',
+                  fontWeight: 'bold',
+                }               
+              }}
+            >
+              <TableCell>Student ID#</TableCell>
+              <TableCell>First Name</TableCell>
+              <TableCell>Last Name</TableCell>
+              <TableCell>Section</TableCell>
+              <TableCell>Gender</TableCell>
+              <TableCell>Age</TableCell>
+              <TableCell>Address</TableCell>
+              <TableCell>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -56,7 +67,9 @@ const List = () => {
                   ':hover': {
                     backgroundColor: '#42a5f5',
                     cursor: 'pointer',
-                    color: 'white'
+                    '& td': {
+                      color: 'white'
+                    }
                   }
                 }}
               >
@@ -71,7 +84,9 @@ const List = () => {
                   sx={{
                     color: (item.status == 'Active' ? 'green' : 'red')
                   }}
-                >{item.status}</TableCell>
+                >
+                  {item.status}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
