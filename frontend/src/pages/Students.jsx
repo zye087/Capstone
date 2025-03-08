@@ -17,6 +17,7 @@ const Students = () => {
         sx={{
           flexGrow: 1,
           margin: '10px',
+          // height: 'calc(100vh - 20px)'
         }}
       >
         <DrawerHeader />
