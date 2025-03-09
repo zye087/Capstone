@@ -94,7 +94,7 @@ const List = () => {
   const [data, setData] = React.useState([])
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -117,10 +117,7 @@ const List = () => {
         component={Paper}
         elevation={4}
         sx={{
-          mt: '10px',
-          // height: '100%'
-          // maxHeight: '100%'
-          maxHeight: 'calc(100vh - 150px)',
+          height: '100%',
         }}
       >
         <Table
@@ -186,10 +183,16 @@ const List = () => {
       <TablePagination
         component={Paper}
         elevation={0}
-        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+        rowsPerPageOptions={[20, 30, { label: 'All', value: -1 }]}
         count={data.length}
         rowsPerPage={rowsPerPage}
         page={page}
+        sx={{
+          display: 'flex',
+          justifyContent: 'end',
+          alignItems: 'center',
+          overflow: 'hidden'
+        }}
         slotProps={{
           select: {
             inputProps: {

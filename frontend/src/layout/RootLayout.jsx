@@ -16,7 +16,8 @@ const RootLayout = () => {
     <>
       <Box
         sx={{
-          display: 'flex' 
+          display: 'flex', 
+          height: '100%'
         }}
       >
         <SideBar />
