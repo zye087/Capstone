@@ -16,6 +16,7 @@ import Reports from './pages/Reports'
 import QRCodes from './pages/QRCodes'
 import ParentsGuardians from './pages/ParentsGuardians'
 import Notifications from './pages/Notifications'
+import View from './components/student/View'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -33,7 +34,13 @@ const App = () => {
         },
         {
           path: '/students',
-          element: <Students />
+          element: <Students />,
+          children: [
+            {
+              path: '/students/:studentId',
+              element: <View />
+            }
+          ]
         },
         {
           path: '/parents-guardians',

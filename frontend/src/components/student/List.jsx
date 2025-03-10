@@ -1,7 +1,11 @@
 import * as React from 'react'
 
+import axiosAPI from '../../Axios'
+
 import {
-  Link
+  Link,
+  Outlet,
+  useNavigate,
 } from 'react-router-dom';
 
 import {
@@ -14,8 +18,8 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  TableFooter,
   IconButton,
+  useTheme,
 } from '@mui/material'
 
 import {
@@ -26,8 +30,6 @@ import {
 } from '@mui/icons-material'
 
 import PropTypes from 'prop-types';
-
-import { useTheme } from '@mui/material/styles';
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -92,6 +94,9 @@ TablePaginationActions.propTypes = {
 
 const List = () => {
   const [data, setData] = React.useState([])
+  const [view, setView] = React.useState([])
+
+  const navigate = useNavigate();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
@@ -103,6 +108,15 @@ const List = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  const handleRowClick = async (id) => {
+    try {
+      const response = await axiosAPI.get(`/student/${id}/`);
+      setView(response.data);
+    } catch (error) {
+      console.error("Error fetching student details:", error);
+    }
   };
 
   React.useEffect(() => {
@@ -150,6 +164,7 @@ const List = () => {
             ).map((item) => (
               <TableRow
                 key={item.id}
+                onClick={() => handleRowClick(item.id)}
                 sx={{
                   ':hover': {
                     backgroundColor: '#42a5f5',
@@ -205,6 +220,7 @@ const List = () => {
         onRowsPerPageChange={handleChangeRowsPerPage}
         ActionsComponent={TablePaginationActions}
       />
+      <Outlet />
     </>
   )
 }
