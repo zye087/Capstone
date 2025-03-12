@@ -1,3 +1,5 @@
 react-router-dom
+prop-types
+axios
 @mui/material @emotion/react @emotion/styled
 @mui/icons-material
